@@ -1,6 +1,6 @@
 import React from "react";
 import "./Button.css";
-import useCount from "../../../store/store";
+import useCount from "remote/store";
 
 function Button() {
   const [state, setState] = useCount();

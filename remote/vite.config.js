@@ -9,18 +9,22 @@ export default defineConfig({
     federation({
       name: "remote_app",
       filename: "remoteEntry.js",
-
+      remotes: {
+        remote: "http://localhost:5010/dist/assets/remoteEntry.js",
+      },
       exposes: {
         "./Button": "./src/components/button/Button",
         "./store": "./store/store",
       },
       shared: {
-        react: { singleton: true, requiredVersion: "19.0.0" },
-        "react-dom": { singleton: true, requiredVersion: "19.0.0" },
-        jotai: { singleton: true, requiredVersion: "2.12.0" },
+        jotai: { singleton: true, requiredVersion: "2.12.0" }, // MUST MATCH EXACTLY
+        react: { singleton: true }, // If sharing React
+        "react-dom": { singleton: true }, // If sharing React
+        // ... other shared dependencies
       },
     }),
   ],
+
   build: {
     modulePreload: false,
     target: "esnext",

@@ -12,7 +12,11 @@ export default defineConfig({
       remotes: {
         remoteapp: "http://localhost:5010/dist/assets/remoteEntry.js",
       },
-      shared: ["react", "react-dom"],
+      shared: {
+        react: { singleton: true }, // If sharing React
+        "react-dom": { singleton: true }, // If sharing React
+        // ... other shared dependencies
+      },
     }),
   ],
   build: {
