@@ -1,6 +1,7 @@
 import "./App.css";
-import Button from "../../remote/src/components/button/Button";
-import useCount from "../../remote/store/store";
+import Button from "remoteapp/Button";
+import useCount from "remoteapp/store";
+
 function App() {
   const [count, setCount] = useCount(0);
 

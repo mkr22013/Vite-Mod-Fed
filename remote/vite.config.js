@@ -8,12 +8,17 @@ export default defineConfig({
     react(),
     federation({
       name: "remote_app",
-      filename: "remoteEntry.js0",
+      filename: "remoteEntry.js",
+
       exposes: {
         "./Button": "./src/components/button/Button",
         "./store": "./store/store",
       },
-      shared: ["react", "react-dom", "jotai"],
+      shared: {
+        react: { singleton: true, requiredVersion: "19.0.0" },
+        "react-dom": { singleton: true, requiredVersion: "19.0.0" },
+        jotai: { singleton: true, requiredVersion: "2.12.0" },
+      },
     }),
   ],
   build: {
